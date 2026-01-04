@@ -1,0 +1,68 @@
+{
+  "name": "cursor-tts-extension",
+  "displayName": "Cursor TTS/STT Extension",
+  "description": "Text-to-Speech and Speech-to-Text integration for Cursor IDE",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "cursor-tts.enable",
+        "title": "Enable TTS"
+      },
+      {
+        "command": "cursor-tts.disable",
+        "title": "Disable TTS"
+      },
+      {
+        "command": "cursor-tts.test",
+        "title": "Test TTS"
+      }
+    ],
+    "configuration": {
+      "title": "Cursor TTS/STT",
+      "properties": {
+        "cursor-tts.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable Text-to-Speech announcements"
+        },
+        "cursor-tts.engine": {
+          "type": "string",
+          "enum": ["system", "pyttsx3", "gtts"],
+          "default": "system",
+          "description": "TTS engine to use"
+        },
+        "cursor-tts.rate": {
+          "type": "number",
+          "default": 150,
+          "description": "Speech rate (words per minute)"
+        },
+        "cursor-tts.autoSendDelay": {
+          "type": "number",
+          "default": 3000,
+          "description": "Auto-send delay for STT (milliseconds)"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/node": "^18.0.0",
+    "typescript": "^5.0.0"
+  }
+}
+
